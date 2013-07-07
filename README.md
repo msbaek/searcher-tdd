@@ -95,3 +95,5 @@ if (isEmpty(statement) || isEmpty(keyword) || statement.indexOf(keyword) == -1)
     return "";
 ```
 로 수정한다.
+
+그리고 notMatched 메소드로 추출한다.

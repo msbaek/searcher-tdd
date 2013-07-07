@@ -29,7 +29,7 @@ public class SearcherTest {
     }
 
     private String search(String statement, String keyword) {
-        if (isEmpty(statement) || isEmpty(keyword) || statement.indexOf(keyword) == -1)
+        if (notMatched(statement, keyword))
             return "";
         int index = statement.indexOf(keyword);
         if (index > 0) {
@@ -38,5 +38,9 @@ public class SearcherTest {
                 return "";
         }
         return String.format("{%s}", statement);
+    }
+
+    private boolean notMatched(String statement, String keyword) {
+        return isEmpty(statement) || isEmpty(keyword) || statement.indexOf(keyword) == -1;
     }
 }
