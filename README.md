@@ -102,3 +102,7 @@ if (isEmpty(statement) || isEmpty(keyword) || statement.indexOf(keyword) == -1)
 
 이번에는 keyword가 포함되고, keyword의 앞에 숫자/밑줄/알파벳 이외의 값이 있는 경우에 대한 테스트를 추가한다.
 
+# 9. 다른 Degenerate 테스트 케이스 추가
+
+이번에는 keyword가 포함되고, keyword의 뒤에 숫자/밑줄/알파벳이 있는 경우에 대한 테스트를 추가한다.
+
