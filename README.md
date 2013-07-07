@@ -17,3 +17,13 @@
 # 1. 첫번째 테스트 추가
 
 searcher.SearcherTest 클래스를 추가하고, 첫번째 테스트 메소드 foo를 추가한다. 이를 실행하여 테스트 환경이 제대로 동작함을 확인한다.
+
+# 2. 첫번째 의미있는 테스트 추가
+
+가장 단순하면서 흥미있고, [원하는 기능의 수준에 많이 떨어지는(degenerate)](http://dictionary.reference.com/browse/degenerate) 테스트를 추가한다.
+
+이러한 순서로 테스트를 추가할 때 지속적으로 production 코드를 generalize할 수 있고 저절로 알고리즘이 나타난다.
+
+## 2.1 Add Failing Test
+
+제일 쉽게 생각할 수 있는 것은 statement와 keyword가 모두 null인 경우이다. 이때 ""를 반환하는 테스트를 추가한다.
