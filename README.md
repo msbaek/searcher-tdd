@@ -14,3 +14,6 @@
 | no, flexible | |
 | no a flex | no a {flex} |
 
+# 1. 첫번째 테스트 추가
+
+searcher.SearcherTest 클래스를 추가하고, 첫번째 테스트 메소드 foo를 추가한다. 이를 실행하여 테스트 환경이 제대로 동작함을 확인한다.
