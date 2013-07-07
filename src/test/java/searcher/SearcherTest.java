@@ -24,6 +24,7 @@ public class SearcherTest {
         searchAndAssertResult("flexer", "flex", "");
         searchAndAssertResult("flex1r", "flex", "");
         searchAndAssertResult("flex_r", "flex", "");
+        searchAndAssertResult("flex?r", "flex", "{flex}?r");
     }
 
     private void searchAndAssertResult(String statement, String keyword, String expectedResult) {
