@@ -67,3 +67,7 @@ searchAndAssertResult로 extract method를 수행하면 동일한 구조를 갖�
 # 6.1 Make it pass
 
 최소한의 코딩으로 테스트를 성공하도록 수정한다.
+
+# 7. 다른 Degenerate 테스트 케이스 추가
+
+이제 생각할 수 있는 경우는 keyword가 포함되었지만 keyword의 앞에 숫자/밑줄/알파벳이 있는 경우이다.
