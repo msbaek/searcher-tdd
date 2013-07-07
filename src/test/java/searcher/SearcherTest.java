@@ -37,6 +37,8 @@ public class SearcherTest {
             String ch = "" + statement.charAt(index - 1);
             if (isAlphanumeric(ch) || ch.equals("_"))
                 return "";
+            return String.format("%s{%s}", statement.substring(0, index),
+                    statement.substring(index, index + keyword.length()));
         }
         return String.format("{%s}", statement);
     }
