@@ -71,3 +71,27 @@ searchAndAssertResult로 extract method를 수행하면 동일한 구조를 갖�
 # 7. 다른 Degenerate 테스트 케이스 추가
 
 이제 생각할 수 있는 경우는 keyword가 포함되었지만 keyword의 앞에 숫자/밑줄/알파벳이 있는 경우이다.
+
+## 7.1 Make it pass
+
+## 7.2 Refactoring
+
+search 메소드가 다소 복잡하다. 깨끗하고 읽기 쉽게 리팩토링한다.
+
+먼저 ""를 반환하는 조건을 하나의 조건문으로 합친다.
+
+```java
+if (isEmpty(statement))
+    return "";
+int index = statement.indexOf(keyword);
+if (index == -1)
+    return "";
+```
+
+를 
+
+```java
+if (isEmpty(statement) || isEmpty(keyword) || statement.indexOf(keyword) == -1)
+    return "";
+```
+로 수정한다.
