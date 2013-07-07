@@ -3,27 +3,30 @@ package searcher;
 import org.apache.commons.lang3.StringUtils;
 
 public class Searcher {
-    public Searcher() {
+    private String statement;
+
+    public Searcher(String statement) {
+        this.statement = statement;
     }
 
-    String search(String statement, String keyword) {
-        if (notMatched(statement, keyword) ||
-                hasInvalidLeadingCharacter(statement, keyword) ||
-                hasInvalidTrailingCharacter(statement, keyword))
+    public String search(String keyword) {
+        if (notMatched(keyword) ||
+                hasInvalidLeadingCharacter(keyword) ||
+                hasInvalidTrailingCharacter(keyword))
             return "";
 
-        return getHighlightedString(statement, keyword);
+        return getHighlightedString(keyword);
     }
 
-    String getHighlightedString(String statement, String keyword) {
+    private String getHighlightedString(String keyword) {
         int index = statement.indexOf(keyword);
         return String.format("%s{%s}%s",
-                getLeadingString(statement, index),
+                getLeadingString(index),
                 keyword,
-                getTrailingString(statement, keyword, index));
+                getTrailingString(keyword, index));
     }
 
-    boolean hasInvalidTrailingCharacter(String statement, String keyword) {
+    private boolean hasInvalidTrailingCharacter(String keyword) {
         int index = statement.indexOf(keyword);
         if (index + keyword.length() < statement.length()) {
             String ch = "" + statement.charAt(index + keyword.length());
@@ -33,7 +36,7 @@ public class Searcher {
         return false;
     }
 
-    boolean hasInvalidLeadingCharacter(String statement, String keyword) {
+    private boolean hasInvalidLeadingCharacter(String keyword) {
         int index = statement.indexOf(keyword);
         if (index > 0) {
             String ch = "" + statement.charAt(index - 1);
@@ -43,16 +46,16 @@ public class Searcher {
         return false;
     }
 
-    String getTrailingString(String statement, String keyword, int index) {
+    private String getTrailingString(String keyword, int index) {
         return index + keyword.length() < statement.length() ?
                 statement.substring(index + keyword.length()) : "";
     }
 
-    String getLeadingString(String statement, int index) {
+    private String getLeadingString(int index) {
         return statement.substring(0, index);
     }
 
-    boolean notMatched(String statement, String keyword) {
+    private boolean notMatched(String keyword) {
         return StringUtils.isEmpty(statement) || StringUtils.isEmpty(keyword) || statement.indexOf(keyword) == -1;
     }
 }

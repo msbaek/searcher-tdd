@@ -6,7 +6,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class SearcherTest {
-    private final Searcher searcher = new Searcher();
+    private Searcher searcher;
 
     @Test
     public void
@@ -31,8 +31,7 @@ public class SearcherTest {
     }
 
     private void searchAndAssertResult(String statement, String keyword, String expectedResult) {
-        String result;
-        result = searcher.search(statement, keyword);
-        assertThat(result, is(expectedResult));
+        searcher = new Searcher(statement);
+        assertThat(searcher.search(keyword), is(expectedResult));
     }
 }
