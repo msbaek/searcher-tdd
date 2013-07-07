@@ -47,3 +47,7 @@ searcher.SearcherTest 클래스를 추가하고, 첫번째 테스트 메소드 f
 ## 4.2 Extract Method
 
 searchAndAssertResult로 extract method를 수행하면 동일한 구조를 갖는 나머지 3곳도 함께 적용되어 중복이 제거된다.
+
+## 4.3 Inline Variables
+
+변수 선언이 필요없는 변수들에 대해 inline variable을 수행하고, 사용되지 않는 변수들을 제거한다.

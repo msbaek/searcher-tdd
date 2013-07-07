@@ -9,23 +9,10 @@ public class SearcherTest {
     @Test
     public void
     should_return_matched_result() {
-        String statement = null;
-        String keyword = null;
-        String result;
-        String expectedResult = "";
-        searchAndAssertResult(statement, keyword, expectedResult);
-
-        statement = null;
-        keyword = "";
-        searchAndAssertResult(statement, keyword, "");
-
-        statement = "";
-        keyword = null;
-        searchAndAssertResult(statement, keyword, "");
-
-        statement = "";
-        keyword = "";
-        searchAndAssertResult(statement, keyword, "");
+        searchAndAssertResult(null, null, "");
+        searchAndAssertResult(null, "", "");
+        searchAndAssertResult("", null, "");
+        searchAndAssertResult("", "", "");
     }
 
     private void searchAndAssertResult(String statement, String keyword, String expectedResult) {
