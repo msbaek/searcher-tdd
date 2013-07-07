@@ -41,17 +41,23 @@ public class SearcherTest {
             return "";
         if (hasInvalidLeadingCharacter(statement, keyword))
             return "";
-        int index1 = statement.indexOf(keyword);
-        if (index1 + keyword.length() < statement.length()) {
-            String ch = "" + statement.charAt(index1 + keyword.length());
-            if (isAlphanumeric(ch) || ch.equals("_"))
-                return "";
-        }
+        if (hasInvalidTrailingCharacter(statement, keyword))
+            return "";
         int index2 = statement.indexOf(keyword);
         return String.format("%s{%s}%s",
                 getLeadingString(statement, index2),
                 keyword,
                 getTrailingString(statement, keyword, index2));
+    }
+
+    private boolean hasInvalidTrailingCharacter(String statement, String keyword) {
+        int index1 = statement.indexOf(keyword);
+        if (index1 + keyword.length() < statement.length()) {
+            String ch = "" + statement.charAt(index1 + keyword.length());
+            if (isAlphanumeric(ch) || ch.equals("_"))
+                return true;
+        }
+        return false;
     }
 
     private boolean hasInvalidLeadingCharacter(String statement, String keyword) {
