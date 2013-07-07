@@ -27,3 +27,7 @@ searcher.SearcherTest 클래스를 추가하고, 첫번째 테스트 메소드 f
 ## 2.1 Add Failing Test
 
 제일 쉽게 생각할 수 있는 것은 statement와 keyword가 모두 null인 경우이다. 이때 ""를 반환하는 테스트를 추가한다.
+
+## 2.2 Make it pass
+
+가장 적은 코딩으로 테스트가 성공하도록 한다(play a little golf라고 밥 아저씨가 언급한).
