@@ -11,8 +11,10 @@ public class SearcherTest {
     should_return_matched_result() {
         String statement = null;
         String keyword = null;
-        String result = search(statement, keyword);
-        assertThat(result, is(""));
+        String result;
+        String expectedResult = "";
+        result = search(statement, keyword);
+        assertThat(result, is(expectedResult));
 
         statement = null;
         keyword = "";
