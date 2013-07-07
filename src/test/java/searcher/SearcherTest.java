@@ -39,12 +39,8 @@ public class SearcherTest {
     private String search(String statement, String keyword) {
         if (notMatched(statement, keyword))
             return "";
-        int index = statement.indexOf(keyword);
-        if (index > 0) {
-            String ch = "" + statement.charAt(index - 1);
-            if (isAlphanumeric(ch) || ch.equals("_"))
-                return "";
-        }
+        if (hasInvalidLeadingCharacter(statement, keyword))
+            return "";
         int index1 = statement.indexOf(keyword);
         if (index1 + keyword.length() < statement.length()) {
             String ch = "" + statement.charAt(index1 + keyword.length());
@@ -56,6 +52,16 @@ public class SearcherTest {
                 getLeadingString(statement, index2),
                 keyword,
                 getTrailingString(statement, keyword, index2));
+    }
+
+    private boolean hasInvalidLeadingCharacter(String statement, String keyword) {
+        int index = statement.indexOf(keyword);
+        if (index > 0) {
+            String ch = "" + statement.charAt(index - 1);
+            if (isAlphanumeric(ch) || ch.equals("_"))
+                return true;
+        }
+        return false;
     }
 
     private String getTrailingString(String statement, String keyword, int index) {
