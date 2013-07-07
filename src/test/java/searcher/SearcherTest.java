@@ -2,6 +2,7 @@ package searcher;
 
 import org.junit.Test;
 
+import static org.apache.commons.lang3.StringUtils.isAlphanumeric;
 import static org.apache.commons.lang3.StringUtils.isEmpty;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -28,11 +29,16 @@ public class SearcherTest {
     }
 
     private String search(String statement, String keyword) {
-        if(isEmpty(statement))
+        if (isEmpty(statement))
             return "";
         int index = statement.indexOf(keyword);
-        if(index == -1)
+        if (index == -1)
             return "";
+        if (index > 0) {
+            String ch = "" + statement.charAt(index - 1);
+            if (isAlphanumeric(ch) || ch.equals("_"))
+                return "";
+        }
         return String.format("{%s}", statement);
     }
 }
