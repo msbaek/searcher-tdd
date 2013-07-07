@@ -111,3 +111,7 @@ if (isEmpty(statement) || isEmpty(keyword) || statement.indexOf(keyword) == -1)
 이번에는 keyword가 포함되고, keyword의 뒤에 숫자/밑줄/알파벳 이외의 값이 있는 경우에 대한 테스트를 추가한다.
 
 # 11. 나머지 케이스들 추가
+
+# 12. Extract Class
+
+Searcher로 Extract Class하고 statement는 constructor를 통해서 전달받도록 수정하고, statement를 사용하는 private method들은 change signature를 수행해서 statement를 파라미터가 아닌 필드 변수를 사용하도록 변경.
