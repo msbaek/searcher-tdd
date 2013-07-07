@@ -55,3 +55,7 @@ searchAndAssertResult로 extract method를 수행하면 동일한 구조를 갖�
 # 5. 다른 Degenerate 테스트 케이스 추가
 
 "", null로 조합되어 ""를 반환하는 경우를 제외하고 가장 단순한 테스트를 추가한다. 아마 keyword와 statement가 동일한 경우가 이 경우일 것이다.
+
+# 5.1 Make it pass
+
+최소한의 코딩으로 동작하도록 한다.

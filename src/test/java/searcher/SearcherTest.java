@@ -2,6 +2,7 @@ package searcher;
 
 import org.junit.Test;
 
+import static org.apache.commons.lang3.StringUtils.isEmpty;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -23,6 +24,8 @@ public class SearcherTest {
     }
 
     private String search(String statement, String keyword) {
-        return "";
+        if(isEmpty(statement))
+            return "";
+        return String.format("{%s}", statement);
     }
 }
