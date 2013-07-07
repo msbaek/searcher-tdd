@@ -2,12 +2,12 @@ package searcher;
 
 import org.junit.Test;
 
-import static org.apache.commons.lang3.StringUtils.isAlphanumeric;
-import static org.apache.commons.lang3.StringUtils.isEmpty;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class SearcherTest {
+    private final Searcher searcher = new Searcher();
+
     @Test
     public void
     should_return_matched_result() {
@@ -32,57 +32,7 @@ public class SearcherTest {
 
     private void searchAndAssertResult(String statement, String keyword, String expectedResult) {
         String result;
-        result = search(statement, keyword);
+        result = searcher.search(statement, keyword);
         assertThat(result, is(expectedResult));
-    }
-
-    private String search(String statement, String keyword) {
-        if (notMatched(statement, keyword) ||
-                hasInvalidLeadingCharacter(statement, keyword) ||
-                hasInvalidTrailingCharacter(statement, keyword))
-            return "";
-
-        return getHighlightedString(statement, keyword);
-    }
-
-    private String getHighlightedString(String statement, String keyword) {
-        int index = statement.indexOf(keyword);
-        return String.format("%s{%s}%s",
-                getLeadingString(statement, index),
-                keyword,
-                getTrailingString(statement, keyword, index));
-    }
-
-    private boolean hasInvalidTrailingCharacter(String statement, String keyword) {
-        int index = statement.indexOf(keyword);
-        if (index + keyword.length() < statement.length()) {
-            String ch = "" + statement.charAt(index + keyword.length());
-            if (isAlphanumeric(ch) || ch.equals("_"))
-                return true;
-        }
-        return false;
-    }
-
-    private boolean hasInvalidLeadingCharacter(String statement, String keyword) {
-        int index = statement.indexOf(keyword);
-        if (index > 0) {
-            String ch = "" + statement.charAt(index - 1);
-            if (isAlphanumeric(ch) || ch.equals("_"))
-                return true;
-        }
-        return false;
-    }
-
-    private String getTrailingString(String statement, String keyword, int index) {
-        return index + keyword.length() < statement.length() ?
-                statement.substring(index + keyword.length()) : "";
-    }
-
-    private String getLeadingString(String statement, int index) {
-        return statement.substring(0, index);
-    }
-
-    private boolean notMatched(String statement, String keyword) {
-        return isEmpty(statement) || isEmpty(keyword) || statement.indexOf(keyword) == -1;
     }
 }
