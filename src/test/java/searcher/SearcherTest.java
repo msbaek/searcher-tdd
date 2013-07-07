@@ -45,15 +45,17 @@ public class SearcherTest {
             if (isAlphanumeric(ch) || ch.equals("_"))
                 return "";
         }
-        if (index + keyword.length() < statement.length()) {
-            String ch = "" + statement.charAt(index + keyword.length());
+        int index1 = statement.indexOf(keyword);
+        if (index1 + keyword.length() < statement.length()) {
+            String ch = "" + statement.charAt(index1 + keyword.length());
             if (isAlphanumeric(ch) || ch.equals("_"))
                 return "";
         }
+        int index2 = statement.indexOf(keyword);
         return String.format("%s{%s}%s",
-                getLeadingString(statement, index),
+                getLeadingString(statement, index2),
                 keyword,
-                getTrailingString(statement, keyword, index));
+                getTrailingString(statement, keyword, index2));
     }
 
     private String getTrailingString(String statement, String keyword, int index) {
