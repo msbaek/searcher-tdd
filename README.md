@@ -59,3 +59,7 @@ searchAndAssertResult로 extract method를 수행하면 동일한 구조를 갖�
 # 5.1 Make it pass
 
 최소한의 코딩으로 동작하도록 한다.
+
+# 6. 다른 Degenerate 테스트 케이스 추가
+
+이제 생각할 수 있는 가장 단순한 테스트는 statement에 keyword가 존재하지 않는 경우이다.
