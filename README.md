@@ -51,3 +51,7 @@ searchAndAssertResult로 extract method를 수행하면 동일한 구조를 갖�
 ## 4.3 Inline Variables
 
 변수 선언이 필요없는 변수들에 대해 inline variable을 수행하고, 사용되지 않는 변수들을 제거한다.
+
+# 5. 다른 Degenerate 테스트 케이스 추가
+
+"", null로 조합되어 ""를 반환하는 경우를 제외하고 가장 단순한 테스트를 추가한다. 아마 keyword와 statement가 동일한 경우가 이 경우일 것이다.

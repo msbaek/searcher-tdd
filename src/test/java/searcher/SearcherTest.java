@@ -13,6 +13,7 @@ public class SearcherTest {
         searchAndAssertResult(null, "", "");
         searchAndAssertResult("", null, "");
         searchAndAssertResult("", "", "");
+        searchAndAssertResult("flex", "flex", "{flex}");
     }
 
     private void searchAndAssertResult(String statement, String keyword, String expectedResult) {
