@@ -27,6 +27,9 @@ public class SearcherTest {
     private String search(String statement, String keyword) {
         if(isEmpty(statement))
             return "";
+        int index = statement.indexOf(keyword);
+        if(index == -1)
+            return "";
         return String.format("{%s}", statement);
     }
 }
