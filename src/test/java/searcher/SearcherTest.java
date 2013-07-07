@@ -50,10 +50,19 @@ public class SearcherTest {
             if (isAlphanumeric(ch) || ch.equals("_"))
                 return "";
         }
-        return String.format("%s{%s}%s", statement.substring(0, index),
-                statement.substring(index, index + keyword.length()),
-                index + keyword.length() < statement.length() ?
-                        statement.substring(index + keyword.length()) : "");
+        return String.format("%s{%s}%s",
+                getLeadingString(statement, index),
+                keyword,
+                getTrailingString(statement, keyword, index));
+    }
+
+    private String getTrailingString(String statement, String keyword, int index) {
+        return index + keyword.length() < statement.length() ?
+                statement.substring(index + keyword.length()) : "";
+    }
+
+    private String getLeadingString(String statement, int index) {
+        return statement.substring(0, index);
     }
 
     private boolean notMatched(String statement, String keyword) {
