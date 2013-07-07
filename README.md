@@ -31,3 +31,7 @@ searcher.SearcherTest 클래스를 추가하고, 첫번째 테스트 메소드 f
 ## 2.2 Make it pass
 
 가장 적은 코딩으로 테스트가 성공하도록 한다(play a little golf라고 밥 아저씨가 언급한).
+
+# 3. 다른 Degenerate 테스트 케이스 추가
+
+(statement, keyword)가 (null, null)인 경우 외에 유사한 (null, ""), ("", null), ("", "")의 경우도 테스트를 추가한다.

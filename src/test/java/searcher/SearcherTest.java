@@ -13,6 +13,21 @@ public class SearcherTest {
         String keyword = null;
         String result = search(statement, keyword);
         assertThat(result, is(""));
+
+        statement = null;
+        keyword = "";
+        result = search(statement, keyword);
+        assertThat(result, is(""));
+
+        statement = "";
+        keyword = null;
+        result = search(statement, keyword);
+        assertThat(result, is(""));
+
+        statement = "";
+        keyword = "";
+        result = search(statement, keyword);
+        assertThat(result, is(""));
     }
 
     private String search(String statement, String keyword) {
