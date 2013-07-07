@@ -37,23 +37,26 @@ public class SearcherTest {
     }
 
     private String search(String statement, String keyword) {
-        if (notMatched(statement, keyword))
+        if (notMatched(statement, keyword) ||
+                hasInvalidLeadingCharacter(statement, keyword) ||
+                hasInvalidTrailingCharacter(statement, keyword))
             return "";
-        if (hasInvalidLeadingCharacter(statement, keyword))
-            return "";
-        if (hasInvalidTrailingCharacter(statement, keyword))
-            return "";
-        int index2 = statement.indexOf(keyword);
+
+        return getHighlightedString(statement, keyword);
+    }
+
+    private String getHighlightedString(String statement, String keyword) {
+        int index = statement.indexOf(keyword);
         return String.format("%s{%s}%s",
-                getLeadingString(statement, index2),
+                getLeadingString(statement, index),
                 keyword,
-                getTrailingString(statement, keyword, index2));
+                getTrailingString(statement, keyword, index));
     }
 
     private boolean hasInvalidTrailingCharacter(String statement, String keyword) {
-        int index1 = statement.indexOf(keyword);
-        if (index1 + keyword.length() < statement.length()) {
-            String ch = "" + statement.charAt(index1 + keyword.length());
+        int index = statement.indexOf(keyword);
+        if (index + keyword.length() < statement.length()) {
+            String ch = "" + statement.charAt(index + keyword.length());
             if (isAlphanumeric(ch) || ch.equals("_"))
                 return true;
         }
