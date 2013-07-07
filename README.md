@@ -43,3 +43,7 @@ searcher.SearcherTest 클래스를 추가하고, 첫번째 테스트 메소드 f
 ## 4.1 중복 제거 사전 준비
 
 메소드로 추출할 영역들에서 추출할 메소드의 파라미터로 처리해야할 서로 다른 부분들이 있다. 이를 변수로 추출하여 사전 준비를 한다.
+
+## 4.2 Extract Method
+
+searchAndAssertResult로 extract method를 수행하면 동일한 구조를 갖는 나머지 3곳도 함께 적용되어 중복이 제거된다.

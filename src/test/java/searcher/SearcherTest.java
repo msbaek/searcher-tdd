@@ -13,23 +13,25 @@ public class SearcherTest {
         String keyword = null;
         String result;
         String expectedResult = "";
-        result = search(statement, keyword);
-        assertThat(result, is(expectedResult));
+        searchAndAssertResult(statement, keyword, expectedResult);
 
         statement = null;
         keyword = "";
-        result = search(statement, keyword);
-        assertThat(result, is(""));
+        searchAndAssertResult(statement, keyword, "");
 
         statement = "";
         keyword = null;
-        result = search(statement, keyword);
-        assertThat(result, is(""));
+        searchAndAssertResult(statement, keyword, "");
 
         statement = "";
         keyword = "";
+        searchAndAssertResult(statement, keyword, "");
+    }
+
+    private void searchAndAssertResult(String statement, String keyword, String expectedResult) {
+        String result;
         result = search(statement, keyword);
-        assertThat(result, is(""));
+        assertThat(result, is(expectedResult));
     }
 
     private String search(String statement, String keyword) {
